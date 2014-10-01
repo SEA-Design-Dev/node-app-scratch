@@ -1,84 +1,125 @@
 # UXE - Node app from scratch
 
-For this assignment, students will be required to build a simple Node example project. Students are to guild a Grunt script that includes libsass. Include JavaScript(jQuery) and hopefully prepare for deployment to Heroku.
+For this assignment, we have built a simple Node example project. We build a Grunt script that includes libsass. Include JavaScript(jQuery) and hopefully prepare for deployment to Heroku.
 
-## Assignment description
+## Step By Step Instructions
 
-This project assignment will cover a few days. The goal of this assignment is to build a Node/Express application from scratch, add libsass and build an example module using all the techniques learned to date for building elemental UIs.
+1. mkdir (project name)
+2. npm init 
+3. subl . (to open project in sublime text)
+4. npm install
+5. express (project name) 
+6. cd into app
+7. npm install (should not have to sudo anything... ever)
+8. npm start (localhost:3000 most likely)
+9. contol t (to keep the npm server running in the background to continue to view easily as changes are made)
+10. touch Gruntfile.js 
+   Add to gruntfile: 
+   module.exports = function(grunt) {
+  grunt.initConfig({
 
-An extension of this assignment is to build your own Bower package that is registered with Bower.io, you can distribute via Github and is 'imported' to your project.
+    ...
 
-### Things I am looking for:
+  });
 
-* Using Express to build a new Node project
-* Make appropriate use of
-  * .gitignore
-  * package.json
-  * bower.json
-  * readme.md files that explain install and set up instructions
-* Install libsass using Grunt to process the Sass
-* Using a modular Sass framework to build an example UI module
-* Include some jQuery for effect
-* Deploy to Heroku
+  grunt.loadNpmTasks('<package>');
+};
 
+11. npm install --save grunt
+12. npm install --save node-sass
+13. npm install grunt-sass --save
+14. update Gruntfile.js : 
+module.exports = function(grunt) {
+  grunt.initConfig({
+    sass: {
+      dist: {
+        files: {
+          'public/stylesheets/style.css': 'sass/style.scss'
+        }
+      }
+    }
+  });
 
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.registerTask('default', ['sass']);
+};
 
-## Submitting assignments
+15. mkdir sass
+16. touch style.scss
+17. add to sass file: 
+$color: orange;
 
-Submitting assignments for this course will require leveraging some of the more advanced features of Github. These features will not only improve your knowledge of Git and Github, but also provide practice exercises for working on a distributed project with a large team.
+body {
+  background-color: $color;
+}
 
-## How to submit an assignment
+18. run grunt 
+19. touch .gitignore
+   add: node_modules
+20. npm install --save-dev grunt-contrib-watch
+21. add the following to Gruntfile.js:
+   module.exports = function(grunt) {
+  grunt.initConfig({
+    sass: {
+      dist: {
+        files: {
+          'public/stylesheets/style.css': 'sass/style.scss'
+        }
+      }
+    },
+    watch: {
+      source: {
+        files: ['sass/**/*.scss', 'views/**/*.jade'],
+        tasks: ['sass'],
+        options: {
+          livereload: true
+        }
+      }
+    }
+  });
 
-In order to submit assignments, please use the following steps
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.registerTask('default', ['sass']);
+};
+22. Add the following to layout.jade:
+   script(src='http://localhost:35729/livereload.js')
+23. bower install git://github.com/Toadstool-Stipe/stipe.git
+24. npm install -g bower
+25. bower init
+26. bower install bourbon
+27. bower install bower-bourbon
+28. bower register <my-package-name> <git-endpoint>
+29. bower install sass-icon-fonts --save
+30. git config --global url."https://"
+31. bower install css-calc-mixin --save
+32. update Gruntfile.js with:
+   module.exports = function(grunt) {
+  grunt.initConfig({
+    sass: {
+      dist: {
+        files: {
+          'public/stylesheets/style.css': 'sass/style.scss'
+        }
+      },
+      options: {
+        includePaths: [
+          './bower_components/css-calc-mixin'
+        ]
+      }
+    },
+    watch: {
+      source: {
+        files: ['sass/**/*.scss', 'views/**/*.jade'],
+        tasks: ['sass'],
+        options: {
+          livereload: true, // needed to run LiveReload
+        }
+      }
+    }
+  });
 
-1. [Fork this repo][1] so that you have a working version
-1. [Clone the forked repo][2] to your local computer
-1. Create a folder named with your name, example `dale-sande`
-1. Once completed with your assignment, commit code to the master branch and push to Github `git push origin master`
-1. From __your fork__ of the project, initiate a pull request to the parent repo
-
-## Assignment review
-
-When a pull request is initiated, I will be notified of the update and comment on the submitted assignment via Github tools.
-
-## Keeping your local repo up to date
-Your local repo will be an independent version of the original repo from the moment you fork the repo. In order to keep your local repo up to date with the original repo, you need to do what is called an [upstream pull][3].
-
-To manage an upstream pull, I suggest updating your `.bash_profile` and your `.gitconfig` file with easy to remember aliases.
-
-### .bash_profile
-
-In your `.bash_profile` add the following alias
-
-```
-alias upstream="git remote add upstream \$@"
-```
-
-From the command line you simply need to refer to the alias and add the path to the upstream repo as shown in the following example.
-
-```
-$ upstream https://github.com/blackfalcon/unicorn-class-css-section.git
-```
-
-Once the upstream repo is configured for your local repo, this never needs to be reset again, unless you delete your local repo.
-
-### .gitconfig
-In your `.gitconfig` add the following alias
-
-```
-[alias]
-  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-```
-
-From the command line, within the project repo, enter the following command to pull latest code from the upstream master.
-
-```
-git pu
-```
-
-
-
-
-[1]:https://help.github.com/articles/fork-a-repo
-[2]:https://help.github.com/articles/fork-a-repo#step-2-clone-your-fork
-[3]:https://help.github.com/articles/syncing-a-fork
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.registerTask('default', ['sass']);
+};
