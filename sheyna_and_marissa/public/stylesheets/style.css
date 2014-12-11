@@ -1,0 +1,148 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: 'Lato', sans-serif;
+  src: url('http://fonts.googleapis.com/css?family=Lato'); }
+
+body {
+  background-color: #f8f0e1; }
+
+p {
+  font-family: 'Lato', sans-serif; }
+
+.logo {
+  width: 4em; }
+
+.logoText {
+  color: #5d8780;
+  font-family: 'Lato', sans-serif;
+  font-size: 6em;
+  display: inline-block;
+  margin: 0 0 0 0.2em; }
+
+nav {
+  display: inline-block;
+  margin-top: 1em; }
+  nav ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 1.6em 0 1.6em; }
+  nav a {
+    color: #5d8780;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none; }
+    nav a:hover {
+      color: #adc6c6; }
+
+.main-content {
+  max-width: 900px;
+  margin: 2em auto 0 auto;
+  padding: 0 6px 0 6px; }
+
+footer {
+  margin-top: 4em;
+  padding: 2em; }
+  footer p {
+    color: #545454;
+    font-size: 0.8em;
+    text-align: center; }
+
+.hero {
+  background-color: #5d8780;
+  background-image: url('/images/lolapattern.jpg');
+  background-size: contain;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 897px;
+  margin: 1.5em auto 1.5em auto;
+  clear: both; }
+
+.panel1 {
+  flex-shrink: 1;
+  flex-basis: 317px; }
+
+.panel2 {
+  flex-shrink: 1;
+  flex-basis: 333px; }
+
+.panel3 {
+  flex-shrink: 1;
+  flex-basis: 247px; }
+
+.panelImage {
+  margin: 0 0 -0.2em 0;
+  max-width: 100%; }
+  .panelImage:hover {
+    opacity: 0.1; }
+
+.box {
+  flex-shrink: 1;
+  flex-basis: 33%;
+  padding: 0 5% 0 5%; }
+  .box img {
+    width: 100%;
+    display: block;
+    margin-bottom: 1em; }
+  .box p {
+    color: #545454;
+    font-size: 0.8em; }
+
+.plugs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 4em 0 2em 0; }
+
+.shop-main {
+  display: block;
+  width: 40em;
+  margin: 1.5em auto; }
+
+.shop-main--images {
+  display: block;
+  width: 90%;
+  margin: 0 5%;
+  overflow: hidden; }
+
+.clothing {
+  width: 28.5%;
+  margin: 2%;
+  border: 0.2em solid #5d8780; }
+
+.clothing--float-left {
+  float: left; }
+
+.clothing--float-right {
+  float: right; }
